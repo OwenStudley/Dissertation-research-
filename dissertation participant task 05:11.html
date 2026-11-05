@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Individual Differences in Gaming Experience and Task Performance</title>
+    <style>
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; text-align: center; background-color: #f4f4f9; color: #333; margin: 0; padding: 30px; }
+        .container { width: 720px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); text-align: left; }
+        h2 { text-align: center; color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-bottom: 10px; margin-top: 0; }
+        h3 { color: #2c3e50; margin-top: 20px; }
+        .box { width: 320px; height: 180px; margin: 20px auto; display: flex; align-items: center; justify-content: center; 
+               font-size: 32px; font-weight: bold; color: white; border-radius: 8px; cursor: pointer; user-select: none; transition: background-color 0.1s ease; }
+        .gray { background-color: #7f8c8d; }
+        .green { background-color: #2ecc71; }
+        .orange-text { color: #d35400; font-weight: bold; font-size: 18px; line-height: 1.4; text-align: center; }
+        .green-text { color: #27ae60; font-weight: bold; font-size: 18px; line-height: 1.4; text-align: center; }
+        .warning-text { color: #c0392b; font-weight: bold; font-size: 16px; text-align: center; }
+        button { padding: 12px 24px; font-size: 16px; font-weight: bold; cursor: pointer; border-radius: 5px; border: none; background-color: #3498db; color: white; margin: 10px 0; width: 100%; }
+        button.reset-btn { background-color: #27ae60; }
+        button:disabled { background-color: #bdc3c7; cursor: not-allowed; }
+        input[type="text"], input[type="number"] { padding: 10px; font-size: 15px; width: 100%; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px; }
+        .form-group { margin-bottom: 18px; }
+        .radio-group { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+        .radio-option { display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer; }
+        table { margin: 15px 0; border-collapse: collapse; width: 100%; background: white; font-size: 13px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #3498db; color: white; }
+        td:first-child { text-align: left; }
+        .pis-box { background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 6px; max-height: 350px; overflow-y: auto; margin-bottom: 20px; font-size: 14px; line-height: 1.6; }
+        .pis-box ul { padding-left: 20px; margin: 8px 0; }
+        .instruction-box { background: #eef7fc; padding: 20px; border-left: 4px solid #3498db; margin-bottom: 20px; line-height: 1.6; border-radius: 4px; }
+        .instruction-box ol { margin-top: 8px; padding-left: 20px; }
+        .debrief-box { background: #fffdf0; padding: 25px; border-left: 4px solid #f39c12; margin-bottom: 20px; line-height: 1.6; border-radius: 4px; font-size: 15px; }
+        .consent-option { margin: 12px 0; font-size: 15px; }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- STAGE 0: PARTICIPANT INFORMATION SHEET & CONSENT -->
+    <div id="stage-pis">
+        <h2>Participant Information Sheet</h2>
+        <p style="font-size: 13px; color: #7f8c8d; margin-top: -5px;">
+            <strong>Study Title:</strong> Individual Differences in Gaming Experience and Computer-Based Task Performance<br>
+            <strong>Researcher:</strong> Owen Studley | <strong>University:</strong> Plymouth Marjon University<br>
+            <strong>Supervisor:</strong> Damien Hackney
+        </p>
+
+        <div class="pis-box">
+            <h3>What is the purpose of the research?</h3>
+            <p>You are being invited to participate in a research study investigating the relationship between individual differences in gaming experience and performance on an online reaction-time task. The study aims to explore how people perform during a task involving visual stimuli and rapid responses.</p>
+            <p>Some details about the research aims and hypotheses will not be disclosed before participation, as this could influence how participants approach the task and affect the findings. A full explanation will be provided during the debriefing at the end of the study.</p>
+
+            <h3>What will participation involve?</h3>
+            <ul>
+                <li>Complete a short questionnaire about your experiences gaming.</li>
+                <li>Complete an online reaction-time task.</li>
+                <li>Respond to visual stimuli as quickly and accurately as possible.</li>
+                <li>Receive performance-related information during the task.</li>
+            </ul>
+            <p>The study should take approximately 5 minutes to complete.</p>
+
+            <h3>Risks and Withdrawal</h3>
+            <p>There are no significant risks associated with participation. However, some aspects of the task may be challenging or mildly frustrating. You may also receive performance-related feedback that does not provide a complete representation of your actual performance.</p>
+            <p>Participation is entirely voluntary. You can stop participating at any time without providing a reason and without disadvantage. You may withdraw at any point before submitting your responses.</p>
+
+            <h3>Data Protection & Confidentiality</h3>
+            <p>Your responses will be used for academic research purposes. Data will be anonymised and stored securely in accordance with university procedures and relevant data protection requirements. Your data will not be used to identify you in the final research report.</p>
+            <p>At the end of the task, you will receive a debriefing explaining the full purpose of the research, including details that were withheld before participation.</p>
+
+            <h3>Contact Details</h3>
+            <p>If you have any questions about the research, you can contact:<br>
+            <strong>Researcher:</strong> Owen Studley: <a href="mailto:20227676@marjon.ac.uk">20227676@marjon.ac.uk</a><br>
+            <strong>Supervisor:</strong> Damien Hackney: <a href="mailto:dhackney@marjon.ac.uk">dhackney@marjon.ac.uk</a></p>
+        </div>
+
+        <div class="form-group" style="background: #eef7fc; padding: 12px; border-radius: 6px;">
+            <label class="consent-option" style="cursor: pointer; font-weight: 600; margin: 0;">
+                <input type="checkbox" id="consent-checkbox" onchange="toggleConsentButton()"> I have read and understood the information sheet, and I consent to take part in this study.
+            </label>
+        </div>
+
+        <button id="pis-proceed-btn" disabled onclick="goToParticipantLogin()">Proceed to Study</button>
+    </div>
+
+    <!-- STAGE 1: PARTICIPANT LOGIN -->
+    <div id="stage-participant" class="hidden">
+        <h2>Participant Login</h2>
+        <p>Please enter your assigned Participant ID to begin:</p>
+        <div class="form-group">
+            <input type="text" id="participant-id" placeholder="e.g., P101">
+        </div>
+        <button onclick="goToQuestionnaire()">Begin Background Questionnaire</button>
+    </div>
+
+    <!-- STAGE 2: QUESTIONNAIRE (VGEQ) -->
+    <div id="stage-questionnaire" class="hidden">
+        <h2>Background & Gaming Questionnaire</h2>
+        <p style="font-size: 14px; color: #7f8c8d;">Participant ID: <strong id="display-pid-1"></strong></p>
+
+        <div class="form-group">
+            <label><strong>1. Age:</strong></label>
+            <input type="number" id="vgeq-age" min="18" max="99" placeholder="Enter age in years">
+        </div>
+
+        <div class="form-group">
+            <label><strong>2. Gender identity:</strong></label>
+            <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="gender" value="Male"> Male</label>
+                <label class="radio-option"><input type="radio" name="gender" value="Female"> Female</label>
+                <label class="radio-option"><input type="radio" name="gender" value="Non-binary"> Non-binary / Self-describe</label>
+                <label class="radio-option"><input type="radio" name="gender" value="Prefer not to say"> Prefer not to say</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label><strong>3. Average weekly gaming hours (last 6 months):</strong></label>
+            <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="gaming_hours" value="0"> 0 hours (Non-gamer)</label>
+                <label class="radio-option"><input type="radio" name="gaming_hours" value="<1"> Less than 1 hour per week</label>
+                <label class="radio-option"><input type="radio" name="gaming_hours" value="1-4"> 1–4 hours per week</label>
+                <label class="radio-option"><input type="radio" name="gaming_hours" value="5-10"> 5–10 hours per week</label>
+                <label class="radio-option"><input type="radio" name="gaming_hours" value="11-20"> 11–20 hours per week</label>
+                <label class="radio-option"><input type="radio" name="gaming_hours" value="20+"> 20+ hours per week</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label><strong>4. Rate how often you play each genre (1 = Never, 5 = Daily):</strong></label>
+            <table>
+                <thead>
+                    <tr><th>Genre</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>FPS / Shooters (e.g., Valorant, CoD, Apex)</td>
+                        <td><input type="radio" name="genre_fps" value="1"></td><td><input type="radio" name="genre_fps" value="2"></td>
+                        <td><input type="radio" name="genre_fps" value="3"></td><td><input type="radio" name="genre_fps" value="4"></td>
+                        <td><input type="radio" name="genre_fps" value="5"></td>
+                    </tr>
+                    <tr>
+                        <td>Action / Battle Royale (e.g., Fortnite, CS:GO)</td>
+                        <td><input type="radio" name="genre_action" value="1"></td><td><input type="radio" name="genre_action" value="2"></td>
+                        <td><input type="radio" name="genre_action" value="3"></td><td><input type="radio" name="genre_action" value="4"></td>
+                        <td><input type="radio" name="genre_action" value="5"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-group">
+            <label><strong>5. Self-reported gaming profile:</strong></label>
+            <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="gamer_type" value="Non-Gamer"> Non-Gamer</label>
+                <label class="radio-option"><input type="radio" name="gamer_type" value="Casual"> Casual Gamer (Non-competitive titles)</label>
+                <label class="radio-option"><input type="radio" name="gamer_type" value="Regular"> Regular Gamer</label>
+                <label class="radio-option"><input type="radio" name="gamer_type" value="Competitive"> Competitive / Hardcore Action Gamer</label>
+            </div>
+        </div>
+
+        <button onclick="goToInstructions()">Submit Questionnaire & View Task Instructions</button>
+    </div>
+
+    <!-- STAGE 3: TASK INSTRUCTIONS -->
+    <div id="stage-instructions" class="hidden">
+        <h2>Task Instructions</h2>
+        <div class="instruction-box">
+            <ol>
+                <li>Position yourself comfortably with your dominant index finger over the primary mouse button.</li>
+                <li>Focus on the central box. A fixation cross (<strong>+</strong>) signals the start of each trial.</li>
+                <li>When the box turns <strong>GREEN</strong> and displays "CLICK NOW!", click it <strong>as quickly as possible</strong>.</li>
+                <li><strong>Do not click early:</strong> Clicks during the fixation cross (<strong>+</strong>) or blank screen reset the trial.</li>
+                <li>You will complete 3 practice trials first before starting the recorded main experiment.</li>
+            </ol>
+        </div>
+        <button onclick="startPracticePhase()">Begin Practice Block</button>
+    </div>
+
+    <!-- STAGE 4: MAIN EXPERIMENTAL TASK -->
+    <div id="stage-task" class="hidden" style="text-align: center;">
+        <h3 id="phase-indicator" style="color: #7f8c8d;">Main Testing Block</h3>
+        <p id="trial-counter">Trial 0 of 11</p>
+
+        <div id="target-box" class="box gray" onclick="handleBoxClick()">+</div>
+
+        <button id="action-btn" onclick="runTrialSequence()">Start Trial</button>
+        <div id="feedback" style="min-height: 50px; margin-top: 15px;"></div>
+    </div>
+
+    <!-- STAGE 5: DEBRIEFING -->
+    <div id="stage-debrief" class="hidden">
+        <h2>Task Complete & Debriefing Statement</h2>
+        <div class="debrief-box">
+            <p>Thank you for participating in this visual processing task.</p>
+            <p><strong>Important Information:</strong> The feedback provided during <strong>Trial 6</strong> was standardized to display a "Below Average" score (682 ms) regardless of your actual reaction speed.</p>
+            <p>This standardized setback was necessary to examine "Post-Error Slowing" and how individuals recalibrate focus following perceived performance errors. Your true reaction speeds across all 11 trials were accurately logged.</p>
+            
+            <hr style="border: 0; border-top: 1px solid #e0e0e0; margin: 20px 0;">
+            <div class="consent-option">
+                <label><input type="radio" name="dataConsent" value="consent" checked> I understand the debriefing and consent to data usage</label>
+            </div>
+            <div class="consent-option">
+                <label><input type="radio" name="dataConsent" value="withdraw"> I wish to withdraw my data from this study</label>
+            </div>
+        </div>
+        <button onclick="handleDebriefSubmit()">Confirm & Submit Responses</button>
+    </div>
+
+    <!-- STAGE 6: SUBMISSION CONFIRMATION & RESEARCHER AREA -->
+    <div id="stage-end" class="hidden">
+        <h2>Experiment Complete</h2>
+        <div id="status-message"></div>
+        <div id="data-action-buttons"></div>
+        <div id="results-table"></div>
+    </div>
+
+</div>
+
+<script>
+    // --- CENTRAL DATABASE CONFIGURATION ---
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec";
+
+    // Application State
+    let pID = "";
+    let questionnaireData = {};
+    let isPractice = false;
+    let currentTrial = 0;
+    let maxTrials = 11;
+    let startTime = 0;
+    let state = "IDLE";
+    let prematureClicksCurrentTrial = 0;
+    let timerId = null;
+    let trialData = [];
+    let participantConsented = true;
+
+    const riggedTrials = [6];
+
+    function toggleConsentButton() {
+        const checkbox = document.getElementById('consent-checkbox');
+        const btn = document.getElementById('pis-proceed-btn');
+        btn.disabled = !checkbox.checked;
+    }
+
+    function goToParticipantLogin() {
+        document.getElementById('stage-pis').classList.add('hidden');
+        document.getElementById('stage-participant').classList.remove('hidden');
+    }
+
+    function goToQuestionnaire() {
+        pID = document.getElementById('participant-id').value.trim();
+        if (!pID) { alert("Please enter a valid Participant ID."); return; }
+        document.getElementById('display-pid-1').innerText = pID;
+        document.getElementById('stage-participant').classList.add('hidden');
+        document.getElementById('stage-questionnaire').classList.remove('hidden');
+    }
+
+    function goToInstructions() {
+        const age = document.getElementById('vgeq-age').value;
+        const hours = document.querySelector('input[name="gaming_hours"]:checked');
+        const gType = document.querySelector('input[name="gamer_type"]:checked');
+
+        if (!age || !hours || !gType) {
+            alert("Please complete the required questionnaire fields before continuing.");
+            return;
+        }
+
+        questionnaireData = {
+            age: age,
+            gender: (document.querySelector('input[name="gender"]:checked') || {}).value || "Unspecified",
+            weekly_hours: hours.value,
+            fps_rating: (document.querySelector('input[name="genre_fps"]:checked') || {}).value || "1",
+            action_rating: (document.querySelector('input[name="genre_action"]:checked') || {}).value || "1",
+            gamer_type: gType.value
+        };
+
+        document.getElementById('stage-questionnaire').classList.add('hidden');
+        document.getElementById('stage-instructions').classList.remove('hidden');
+    }
+
+    function startPracticePhase() {
+        isPractice = true;
+        currentTrial = 0;
+        maxTrials = 3;
+        document.getElementById('stage-instructions').classList.add('hidden');
+        document.getElementById('stage-task').classList.remove('hidden');
+        document.getElementById('phase-indicator').innerText = "PRACTICE BLOCK (Not Recorded)";
+        document.getElementById('trial-counter').innerText = `Practice Trial 0 of ${maxTrials}`;
+    }
+
+    function startMainExperiment() {
+        isPractice = false;
+        currentTrial = 0;
+        maxTrials = 11;
+        trialData = [];
+        document.getElementById('phase-indicator').innerText = "MAIN EXPERIMENTAL BLOCK";
+        document.getElementById('trial-counter').innerText = `Trial 0 of ${maxTrials}`;
+        document.getElementById('action-btn').innerText = "Start Main Task";
+        document.getElementById('action-btn').disabled = false;
+        document.getElementById('feedback').innerHTML = "";
+    }
+
+    function runTrialSequence() {
+        document.getElementById('action-btn').disabled = true;
+        document.getElementById('feedback').innerHTML = '';
+        prematureClicksCurrentTrial = 0;
+        const box = document.getElementById('target-box');
+        
+        state = "FIXATION";
+        box.className = 'box gray';
+        box.innerText = '+';
+
+        setTimeout(() => {
+            state = "WAITING";
+            box.innerText = '';
+            const randomDelay = Math.floor(Math.random() * 2000) + 1500;
+
+            timerId = setTimeout(() => {
+                state = "GREEN";
+                box.className = 'box green';
+                box.innerText = 'CLICK NOW!';
+                startTime = performance.now();
+            }, randomDelay);
+        }, 500);
+    }
+
+    function handleBoxClick() {
+        const box = document.getElementById('target-box');
+
+        if (state === "FIXATION" || state === "WAITING") {
+            clearTimeout(timerId);
+            prematureClicksCurrentTrial++;
+            state = "IDLE";
+            box.className = 'box gray';
+            box.innerText = '+';
+            document.getElementById('feedback').innerHTML = `<p class="warning-text">TOO EARLY! Wait for GREEN before clicking.<br>(Early clicks: ${prematureClicksCurrentTrial})</p>`;
+            document.getElementById('action-btn').innerText = "Retry Trial";
+            document.getElementById('action-btn').disabled = false;
+            return;
+        }
+
+        if (state === "GREEN") {
+            const endTime = performance.now();
+            const reactionTimeMs = Math.round(endTime - startTime);
+            state = "FEEDBACK";
+            box.className = 'box gray';
+            box.innerText = '+';
+            currentTrial++;
+
+            const feedbackDiv = document.getElementById('feedback');
+            let statusShown = "PASSED";
+            let isRigged = false;
+
+            if (!isPractice && riggedTrials.includes(currentTrial)) {
+                statusShown = "BELOW_AVERAGE";
+                isRigged = true;
+                feedbackDiv.innerHTML = `<p class="orange-text">Below Average<br>Score: 682 ms</p>`;
+            } else {
+                feedbackDiv.innerHTML = `<p class="green-text">PASSED - Speed: ${reactionTimeMs}ms<br>Score: Above Average</p>`;
+            }
+
+            if (!isPractice) {
+                trialData.push({
+                    participant: pID,
+                    trial: currentTrial,
+                    reactionTimeMs: reactionTimeMs,
+                    isRigged: isRigged,
+                    statusShown: statusShown,
+                    prematureClicks: prematureClicksCurrentTrial
+                });
+            }
+
+            if (isPractice) {
+                document.getElementById('trial-counter').innerText = `Practice Trial ${currentTrial} of ${maxTrials}`;
+                if (currentTrial < maxTrials) {
+                    document.getElementById('action-btn').innerText = "Next Practice Trial";
+                    document.getElementById('action-btn').disabled = false;
+                } else {
+                    alert("Practice Complete! Click OK to start the recorded experiment.");
+                    startMainExperiment();
+                }
+            } else {
+                document.getElementById('trial-counter').innerText = `Trial ${currentTrial} of ${maxTrials}`;
+                if (currentTrial < maxTrials) {
+                    // Check if this just completed Trial 6 (the rigged failure)
+                    if (!isPractice && currentTrial === 6) {
+                        // Implement 3-second cool-down before enabling Trial 7
+                        document.getElementById('action-btn').innerText = "Cooling down (3s)...";
+                        document.getElementById('action-btn').disabled = true;
+                        
+                        let countdown = 3;
+                        const coolDownTimer = setInterval(() => {
+                            countdown--;
+                            if (countdown > 0) {
+                                document.getElementById('action-btn').innerText = `Cooling down (${countdown}s)...`;
+                            } else {
+                                clearInterval(coolDownTimer);
+                                document.getElementById('action-btn').innerText = "Next Trial";
+                                document.getElementById('action-btn').disabled = false;
+                            }
+                        }, 1000);
+                    } else {
+                        document.getElementById('action-btn').innerText = "Next Trial";
+                        document.getElementById('action-btn').disabled = false;
+                    }
+                } else {
+                    showDebriefScreen();
+                }
+            }
+        }
+    }
+
+    function showDebriefScreen() {
+        document.getElementById('stage-task').classList.add('hidden');
+        document.getElementById('stage-debrief').classList.remove('hidden');
+    }
+
+    function calculateMetrics() {
+        const baselineTrials = trialData.filter(t => t.trial <= 5);
+        const baselineMean = baselineTrials.length > 0 
+            ? (baselineTrials.reduce((sum, t) => sum + t.reactionTimeMs, 0) / baselineTrials.length).toFixed(2)
+            : "N/A";
+
+        const trial7Obj = trialData.find(t => t.trial === 7);
+        const trial7RT = trial7Obj ? trial7Obj.reactionTimeMs : "N/A";
+
+        const pesDelta = (baselineMean !== "N/A" && trial7RT !== "N/A") 
+            ? (trial7RT - parseFloat(baselineMean)).toFixed(2) 
+            : "N/A";
+
+        return {
+            baselineMean: baselineMean,
+            trial7RT: trial7RT,
+            pesDelta: pesDelta
+        };
+    }
+
+    function handleDebriefSubmit() {
+        const consentSelected = document.querySelector('input[name="dataConsent"]:checked').value;
+        participantConsented = (consentSelected === "consent");
+
+        document.getElementById('stage-debrief').classList.add('hidden');
+        document.getElementById('stage-end').classList.remove('hidden');
+
+        const statusMsg = document.getElementById('status-message');
+
+        if (!participantConsented) {
+            statusMsg.innerHTML = `<p style="color: #c0392b; font-weight: bold;">✕ Participant WITHDREW data. No information was submitted to the database.</p>`;
+            return;
+        }
+
+        const metrics = calculateMetrics();
+
+        const payload = {
+            participant_id: pID,
+            questionnaire: questionnaireData,
+            baseline_mean: metrics.baselineMean,
+            trial7_rt: metrics.trial7RT,
+            pes_delta: metrics.pesDelta,
+            consented: participantConsented,
+            task_trials: trialData
+        };
+
+        statusMsg.innerHTML = `<p style="color: #3498db; font-weight: bold;">Submitting data to central database...</p>`;
+
+        fetch(GOOGLE_SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        })
+        .then(() => {
+            statusMsg.innerHTML = `<p style="color: #27ae60; font-weight: bold; font-size: 18px;">✓ Responses submitted successfully! You may now close this window.</p>`;
+            document.getElementById('data-action-buttons').innerHTML = `<button onclick="downloadCSV()">Download Backup Copy (.csv)</button>`;
+        })
+        .catch(error => {
+            console.error("Submission error:", error);
+            statusMsg.innerHTML = `<p style="color: #e74c3c; font-weight: bold;">Server connection failed. Please click below to download your backup CSV file.</p>`;
+            document.getElementById('data-action-buttons').innerHTML = `<button onclick="downloadCSV()">Download Backup CSV</button>`;
+        });
+
+        let tableHTML = `<div style="margin-bottom: 15px; font-weight: bold; background: #f8fafc; padding: 10px; border-radius: 4px;">
+            Baseline Mean (T1-T5): ${metrics.baselineMean} ms | Immediate Post-Failure RT (T7): ${metrics.trial7RT} ms | PES Delta: ${metrics.pesDelta} ms
+        </div>`;
+        tableHTML += `<table>
+            <tr><th>Trial</th><th>Actual RT (ms)</th><th>Early Clicks</th><th>Condition</th><th>Feedback Shown</th></tr>`;
+        trialData.forEach(row => {
+            tableHTML += `<tr>
+                <td>${row.trial}</td>
+                <td>${row.reactionTimeMs}</td>
+                <td>${row.prematureClicks}</td>
+                <td>${row.isRigged ? 'Rigged Failure' : 'Normal'}</td>
+                <td>${row.statusShown}</td>
+            </tr>`;
+        });
+        tableHTML += `</table>`;
+        document.getElementById('results-table').innerHTML = tableHTML;
+    }
+
+    function downloadCSV() {
+        if (!participantConsented) return;
+
+        const metrics = calculateMetrics();
+
+        let csv = "data:text/csv;charset=utf-8,";
+        csv += `# DEMOGRAPHICS: Participant=${pID}, Age=${questionnaireData.age}, Gender=${questionnaireData.gender}, GamingHours=${questionnaireData.weekly_hours}, GamerType=${questionnaireData.gamer_type}\n`;
+        csv += `# METRICS: Baseline_Mean_RT(T1-T5)=${metrics.baselineMean}ms, Post_Failure_RT(T7)=${metrics.trial7RT}ms, PES_Delta=${metrics.pesDelta}ms\n\n`;
+        csv += "Participant_ID,Trial,ReactionTime_ms,PrematureClicks,Is_Rigged,Status_Shown\n";
+
+        trialData.forEach(row => {
+            csv += `${row.participant},${row.trial},${row.reactionTimeMs},${row.prematureClicks},${row.isRigged},${row.statusShown}\n`;
+        });
+
+        const encodedUri = encodeURI(csv);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", `${pID}_PES_gaming_data.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+</script>
+
+</body>
+</html>
